@@ -13,25 +13,25 @@ Supports *-git packages and custom update logic for specific packages.
 
 ## Usage
 
-1. Create a symbolic link to your AUR SSH key:
+Create a symbolic link to your AUR SSH key:
 
 ```bash
 ln -sf /path/to/your/aur_key ./aur_key
 ```
 
-1. Build the Docker image:
+Build the Docker image:
 
 ```bash
 docker build -t <your-image-name> .
 ```
 
-1. Writing your update rules and test:
+Writing your update rules and test:
 
 ```bash
 ./update.sh -d // for debug mode (does not push to AUR)
 ```
 
-1. Set cron job to run `update.sh` periodically:
+Set cron job to run `update.sh` periodically:
 
 ```bash
 crontab -e
