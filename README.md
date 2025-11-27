@@ -28,7 +28,7 @@ docker build -t <your-image-name> .
 Writing your update rules and test:
 
 ```bash
-./update.sh -d // for debug mode (does not push to AUR)
+./update.sh -d # for debug mode (does not push to AUR)
 ```
 
 Set cron job to run `update.sh` periodically:
