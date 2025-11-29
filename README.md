@@ -16,25 +16,25 @@ Supports *-git packages and custom update logic for specific packages.
 Create a symbolic link to your AUR SSH key:
 
 ```bash
-ln -sf /path/to/your/aur_key ./aur_key
+$ ln -sf /path/to/your/aur_key ./aur_key
 ```
 
 Build the Docker image:
 
 ```bash
-docker build -t <your-image-name> .
+$ docker build -t <your-image-name> .
 ```
 
 Writing your update rules and test:
 
 ```bash
-./update.sh -d # for debug mode (does not push to AUR)
+$ ./update.sh -d # for debug mode (does not push to AUR)
 ```
 
 Set cron job to run `update.sh` periodically:
 
 ```bash
-crontab -e
+$ crontab -e
 ```
 
 ```crontab
