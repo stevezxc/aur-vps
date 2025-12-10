@@ -35,6 +35,8 @@ commit() {
 		if [[ "$DEBUG_FLAG" == "TRUE" ]]; then
 			log "Debug mode enabled, skipping commit and push"
 			return
+		else
+			log "$PKG_NAME commit and push"
 		fi
 		git add PKGBUILD .SRCINFO
 		NEW_VER=$(grep "pkgver =" .SRCINFO | head -1 | awk '{print $3}')
