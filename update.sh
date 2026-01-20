@@ -93,6 +93,19 @@ find "$REPOS_DIR" -maxdepth 1 -mindepth 1 -type d | sort | while read -r PKG_DIR
 		log "Building $PKG_NAME ..."
 		build_pkg "$PKG_DIR" "updpkgsums && makepkg --printsrcinfo > .SRCINFO"
 		;;
+	ednovas-cloud)
+		CURRENT_VER=$(grep "^pkgver=" PKGBUILD | cut -d'=' -f2)
+		log "Current version: $CURRENT_VER"
+		bash ./update.sh | tee -a "$LOG_FILE"
+		LATEST_VER=$(grep "^pkgver=" PKGBUILD | cut -d'=' -f2)
+		log "Latest version: $LATEST_VER"
+		if [ "$CURRENT_VER" == "$LATEST_VER" ]; then
+			log "$PKG_NAME is up to date, no update needed"
+			continue
+		fi
+		log "Building $PKG_NAME ..."
+		build_pkg "$PKG_DIR" "updpkgsums && makepkg --printsrcinfo > .SRCINFO"
+		;;
 	esac
 
 	commit "$PKG_NAME"
