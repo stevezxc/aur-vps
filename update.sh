@@ -41,7 +41,7 @@ commit() {
 		git add PKGBUILD .SRCINFO
 		NEW_VER=$(grep "pkgver =" .SRCINFO | head -1 | awk '{print $3}')
 		git commit -m "Update to $NEW_VER"
-		GIT_SSH_COMMAND='ssh -i $WORK_DIR/aur -o IdentitiesOnly=yes' git push origin master
+		GIT_SSH_COMMAND="ssh -i $WORK_DIR/aur_key -o IdentitiesOnly=yes" git push origin master
 	else
 		log "$PKG_NAME no commit needed"
 	fi
